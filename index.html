@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>اختبار الرخصة المهنية – حاسب آلي | المدرب علي العرياني</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EEF3FB;--card:#FFFFFF;--ink:#0A1733;--muted:#5A6B8C;--line:#D5DEEE;--cy:#0891B2;--vi:#7C3AED;--ok:#16A34A;--okbg:#DCFCE7;--bad:#DC2626;--badbg:#FEE2E2;--btn:#F4F7FC}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#060D22;--card:#0E1D45;--ink:#EEF3FF;--muted:#9FB0D3;--line:#22386E;--cy:#22D3EE;--vi:#A78BFA;--ok:#4ADE80;--okbg:#0F3D26;--bad:#F87171;--badbg:#45161A;--btn:#132652}}
+:root[data-theme="dark"]{--bg:#060D22;--card:#0E1D45;--ink:#EEF3FF;--muted:#9FB0D3;--line:#22386E;--cy:#22D3EE;--vi:#A78BFA;--ok:#4ADE80;--okbg:#0F3D26;--bad:#F87171;--badbg:#45161A;--btn:#132652}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*:before,*:after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Cairo,"Segoe UI",Tahoma,Arial,sans-serif;line-height:1.7;min-height:100%}
+.wrap{max-width:720px;margin:0 auto;padding:20px 16px 40px}
+.brand{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:16px;font-size:14px;color:var(--muted)}
+.brand b{color:var(--ink);font-weight:700}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px}
+h1{font-size:30px;font-weight:900;line-height:1.35;margin:0 0 8px}
+h1 span{color:var(--cy)}
+.lead{color:var(--muted);margin:0 0 18px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.pill{font-size:14px;font-weight:600;padding:4px 12px;border-radius:30px;border:1px solid var(--line);background:var(--btn)}
+.go{display:block;width:100%;border:0;border-radius:14px;padding:14px;font:700 19px Cairo,sans-serif;color:#fff;background:linear-gradient(90deg,var(--vi),var(--cy));cursor:pointer}
+.go:focus-visible,.opt:focus-visible{outline:3px solid var(--cy);outline-offset:2px}
+.top{display:flex;justify-content:space-between;font-size:14px;color:var(--muted);margin-bottom:8px}
+.bar{height:8px;border-radius:8px;background:var(--line);overflow:hidden;margin-bottom:18px}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--vi),var(--cy));transition:width .3s}
+.std{display:inline-block;font-size:13px;font-weight:700;color:var(--vi);margin-bottom:6px}
+.q{font-size:21px;font-weight:700;margin:0 0 16px}
+.q code,.opt code{direction:ltr;unicode-bidi:isolate;font-family:Consolas,monospace;background:var(--btn);padding:1px 6px;border-radius:6px}
+.opts{display:grid;gap:10px}
+.opt{display:flex;align-items:center;gap:12px;width:100%;text-align:right;border:2px solid var(--line);background:var(--btn);color:var(--ink);border-radius:14px;padding:12px 14px;font:600 17px Cairo,sans-serif;cursor:pointer;transition:border-color .15s}
+.opt:hover:not(:disabled){border-color:var(--cy)}
+.opt .k{flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--card);border:1px solid var(--line);font-weight:700}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}
+.opt.ok .k{background:var(--ok);color:#fff;border-color:var(--ok)}
+.opt.bad{border-color:var(--bad);background:var(--badbg)}
+.opt.bad .k{background:var(--bad);color:#fff;border-color:var(--bad)}
+.opt:disabled{cursor:default}
+.exp{margin-top:14px;padding:12px 14px;border-radius:14px;background:var(--btn);border-right:4px solid var(--cy);font-size:16px}
+.exp b{color:var(--cy)}
+.next{margin-top:16px}
+.score{text-align:center;padding:10px 0 4px}
+.ring{width:150px;height:150px;border-radius:50%;margin:0 auto 12px;display:grid;place-items:center}
+.ring div{width:118px;height:118px;border-radius:50%;background:var(--card);display:grid;place-items:center;font-size:34px;font-weight:900}
+.msg{font-size:20px;font-weight:700;margin:0}
+.sub{color:var(--muted);margin:4px 0 18px}
+h2{font-size:20px;font-weight:700;margin:22px 0 10px}
+.row{margin-bottom:12px}
+.row .l{display:flex;justify-content:space-between;font-size:15px;font-weight:600;gap:10px}
+.row .l span:last-child{flex:none;color:var(--muted)}
+.row .t{height:8px;border-radius:8px;background:var(--line);overflow:hidden;margin-top:4px}
+.row .t i{display:block;height:100%}
+.rev{border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:10px;font-size:15px}
+.rev p{margin:0 0 4px}
+.rev .a{color:var(--ok);font-weight:700}
+.rev .w{color:var(--bad);font-weight:700}
+.foot{margin-top:22px;text-align:center;font-size:14px;color:var(--muted)}
+.foot .acc{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:6px;direction:ltr}
+.hide{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand"><span>إعداد: <b>المدرب / علي صالح العرياني</b></span><span>نموذج تجريبي</span></div>
+
+  <section id="start" class="card">
+    <h1>اختبار محاكاة <span>الرخصة المهنية</span> – تخصص الحاسب الآلي</h1>
+    <p class="lead">أسئلة من إعداد المدرب تغطي المعايير الستة عشر للتخصص، مع شرح لكل إجابة وتحليل لمستواك في كل معيار عند الانتهاء.</p>
+    <div class="meta"><span class="pill" id="qcount"></span><span class="pill">16 معياراً</span><span class="pill">أربعة اختيارات لكل سؤال</span><span class="pill">ترتيب عشوائي</span></div>
+    <button class="go" id="begin">ابدأ الاختبار</button>
+  </section>
+
+  <section id="quiz" class="card hide">
+    <div class="top"><span id="pos"></span><span id="clock">00:00</span></div>
+    <div class="bar"><i id="prog"></i></div>
+    <span class="std" id="std"></span>
+    <p class="q" id="qt"></p>
+    <div class="opts" id="opts"></div>
+    <div class="exp hide" id="exp"></div>
+    <button class="go next hide" id="next">السؤال التالي</button>
+  </section>
+
+  <section id="result" class="card hide">
+    <div class="score">
+      <div class="ring" id="ring"><div id="pct"></div></div>
+      <p class="msg" id="msg"></p>
+      <p class="sub" id="sub"></p>
+    </div>
+    <h2>مستواك في كل معيار</h2>
+    <div id="bystd"></div>
+    <h2 id="revh">راجع إجاباتك الخاطئة</h2>
+    <div id="review"></div>
+    <button class="go" id="again">أعد الاختبار</button>
+  </section>
+
+  <div class="foot">
+    للمزيد من الاختبارات والشروحات تابع المدرب علي العرياني
+    <div class="acc"><span class="pill">Telegram: Ali_Aleryany</span><span class="pill">TikTok: @alialeryani</span><span class="pill">X: @ali_aleryany</span></div>
+  </div>
+</div>
+
+<script>
+const Q=[
+{s:1,q:"ما ناتج جمع المصفوفتين <code>[[1,2],[3,4]]</code> و <code>[[5,6],[7,8]]</code>؟",o:["<code>[[6,8],[10,12]]</code>","<code>[[5,12],[21,32]]</code>","<code>[[6,8],[12,10]]</code>","<code>[[4,4],[4,4]]</code>"],a:0,e:"جمع المصفوفات يتم عنصراً بعنصر في الموقع نفسه: 1+5=6، 2+6=8، 3+7=10، 4+8=12. الخيار الثاني هو ناتج ضرب العناصر المتقابلة وليس الجمع."},
+{s:1,q:"إذا كانت المصفوفة A من الرتبة 2×3 والمصفوفة B من الرتبة 3×4، فما رتبة حاصل الضرب AB؟",o:["2×4","3×3","4×2","لا يمكن ضربهما"],a:0,e:"يمكن الضرب لأن عدد أعمدة A (3) يساوي عدد صفوف B (3)، والناتج يأخذ عدد صفوف الأولى وعدد أعمدة الثانية: 2×4."},
+{s:1,q:"العدد الثنائي <code>1011</code> يساوي في النظام العشري:",o:["11","13","9","7"],a:0,e:"1×8 + 0×4 + 1×2 + 1×1 = 11."},
+{s:2,q:"أي بوابة منطقية يكون ناتجها 1 فقط عندما يختلف المدخلان؟",o:["XOR","AND","OR","NAND"],a:0,e:"بوابة XOR (أو الحصرية) تعطي 1 عند اختلاف المدخلين (0،1) أو (1،0)، وتعطي 0 عند تساويهما."},
+{s:2,q:"تسمى بوابتا NAND و NOR بالبوابات العامة (Universal) لأن:",o:["أي دائرة منطقية يمكن بناؤها باستخدام إحداهما فقط","ناتجهما دائماً 1","تعملان بدون مصدر طاقة","تستخدمان في الذاكرة فقط"],a:0,e:"باستخدام NAND وحدها (أو NOR وحدها) يمكن بناء NOT و AND و OR، وبالتالي أي دائرة منطقية."},
+{s:3,q:"الوحدة المسؤولة عن تنفيذ العمليات الحسابية والمنطقية داخل المعالج هي:",o:["وحدة الحساب والمنطق ALU","وحدة التحكم CU","الذاكرة المخبئية Cache","الذاكرة الرئيسية RAM"],a:0,e:"ALU تنفذ العمليات الحسابية والمقارنات المنطقية، بينما وحدة التحكم CU تنظم تنفيذ التعليمات وتوجّه بقية الأجزاء."},
+{s:3,q:"رتّبت أنواع الذاكرة من الأسرع إلى الأبطأ، فأيها الأسرع؟",o:["المسجلات Registers","الذاكرة المخبئية Cache","الذاكرة الرئيسية RAM","وحدة التخزين SSD"],a:0,e:"المسجلات داخل المعالج نفسه فهي الأسرع، تليها Cache ثم RAM ثم وحدات التخزين الثانوية."},
+{s:4,q:"البروتوكول المسؤول عن تحويل أسماء النطاقات مثل example.com إلى عناوين IP هو:",o:["DNS","DHCP","FTP","SMTP"],a:0,e:"DNS نظام أسماء النطاقات. أما DHCP فيوزّع عناوين IP تلقائياً، وFTP لنقل الملفات، وSMTP لإرسال البريد."},
+{s:4,q:"كم عدد طبقات النموذج المرجعي OSI؟",o:["7","4","5","6"],a:0,e:"نموذج OSI سبع طبقات: التطبيقات، العرض، الجلسة، النقل، الشبكة، ربط البيانات، الطبقة المادية. أما نموذج TCP/IP فأربع طبقات."},
+{s:5,q:"ما مخرجات المقطع التالي؟ <code>x = 7; if x % 2 == 0: print(\"زوجي\") else: print(\"فردي\")</code>",o:["فردي","زوجي","7","خطأ في البرنامج"],a:0,e:"العامل % يعطي باقي القسمة. باقي قسمة 7 على 2 يساوي 1، فالشرط غير متحقق ويُطبع «فردي»."},
+{s:5,q:"في مشاريع المتحكمات الدقيقة، أي حساس يُستخدم لقياس المسافة عبر الموجات فوق الصوتية؟",o:["Ultrasonic","LDR","PIR","DHT11"],a:0,e:"حساس Ultrasonic يرسل موجة ويقيس زمن ارتدادها. LDR للضوء، وPIR لرصد الحركة، وDHT11 للحرارة والرطوبة."},
+{s:6,q:"الحقل الذي يميّز كل سجل في الجدول تمييزاً فريداً ولا يقبل التكرار يسمى:",o:["المفتاح الأساسي Primary Key","المفتاح الأجنبي Foreign Key","الفهرس Index","الاستعلام Query"],a:0,e:"المفتاح الأساسي فريد ولا يكون فارغاً. أما المفتاح الأجنبي فيربط جدولاً بالمفتاح الأساسي لجدول آخر."},
+{s:6,q:"أي أمر في لغة SQL يُستخدم لاسترجاع البيانات من الجدول؟",o:["SELECT","UPDATE","INSERT","DELETE"],a:0,e:"SELECT للاسترجاع، UPDATE للتعديل، INSERT للإضافة، DELETE للحذف."},
+{s:7,q:"رسالة بريد تنتحل صفة جهة موثوقة لخداع المستخدم وسرقة بياناته تسمى:",o:["التصيد الاحتيالي Phishing","هجوم حجب الخدمة DDoS","برنامج الفدية Ransomware","حقن SQL"],a:0,e:"التصيد يعتمد على الهندسة الاجتماعية والرسائل المزيفة لسرقة كلمات المرور أو البيانات البنكية."},
+{s:7,q:"مثلث أمن المعلومات CIA يتكون من:",o:["السرية والسلامة والتوافر","التشفير والنسخ الاحتياطي والتحديث","الجدار الناري ومضاد الفيروسات وكلمة المرور","التحقق والتفويض والمحاسبة"],a:0,e:"Confidentiality السرية، Integrity سلامة البيانات من التعديل، Availability توافرها عند الحاجة. أما الخيار الأخير فهو نموذج AAA."},
+{s:8,q:"الحالة التي تنتظر فيها عمليتان أو أكثر مورداً تحتفظ به عملية أخرى، فتتوقف جميعها، تسمى:",o:["الجمود Deadlock","المجاعة Starvation","الترحيل Paging","التقطيع الزمني Time Slicing"],a:0,e:"في الجمود ينتظر كل طرف الآخر إلى ما لا نهاية. أما المجاعة فهي تأخر عملية طويلاً لأن غيرها يُقدَّم عليها باستمرار."},
+{s:9,q:"استخدام برنامج معالجة نصوص عبر المتصفح دون تثبيته على الجهاز مثال على نموذج:",o:["البرمجيات كخدمة SaaS","البنية التحتية كخدمة IaaS","المنصة كخدمة PaaS","الحوسبة الطرفية Edge"],a:0,e:"في SaaS يستخدم المستخدم التطبيق الجاهز مباشرة عبر الإنترنت، بينما IaaS توفر خوادم وتخزيناً، وPaaS توفر بيئة لتطوير التطبيقات."},
+{s:10,q:"قيام شخص بنسخ برنامج مدفوع وتوزيعه على الآخرين دون إذن الشركة المالكة يُعد:",o:["انتهاكاً لحقوق الملكية الفكرية","استخداماً عادلاً","مشاركة مشروعة للمعرفة","نسخاً احتياطياً"],a:0,e:"البرامج محمية بحقوق الملكية الفكرية، وتوزيعها دون ترخيص يُعد قرصنة مخالفة للأنظمة والأخلاقيات."},
+{s:11,q:"معلم يريد جمع إجابات طلابه إلكترونياً وتصحيحها آلياً. أنسب أداة لذلك:",o:["النماذج والاختبارات الإلكترونية","برنامج معالجة النصوص","برنامج العروض التقديمية","برنامج تحرير الصور"],a:0,e:"أدوات النماذج والاختبارات الإلكترونية تجمع الإجابات وتصححها آلياً وتعرض إحصاءات عن أداء الطلاب."},
+{s:12,q:"استراتيجية يعمل فيها الطلاب في مجموعات صغيرة غير متجانسة، لكل فرد دور محدد لتحقيق هدف مشترك:",o:["التعلم التعاوني","المحاضرة","التعلم الذاتي","العرض العملي"],a:0,e:"التعلم التعاوني يقوم على الاعتماد المتبادل الإيجابي وتوزيع الأدوار والمسؤولية الفردية داخل المجموعة."},
+{s:13,q:"عنصر المنهج الذي يحدد ما يُتوقع من الطالب اكتسابه بعد عملية التعلم هو:",o:["الأهداف ونواتج التعلم","المحتوى","الأنشطة","مصادر التعلم"],a:0,e:"الأهداف أو نواتج التعلم تحدد المطلوب، ثم يُختار المحتوى والأنشطة وأساليب التقويم لتحقيقها."},
+{s:14,q:"تدريس مفاهيم علوم الحاسب والبرمجة دون استخدام الحاسب، عبر أنشطة ورقية وحركية، يسمى:",o:["التعليم غير المتصل Unplugged","التعليم المدمج","الفصل المقلوب","التعلم المصغر"],a:0,e:"أنشطة Unplugged تبني التفكير الحاسوبي بالألعاب والبطاقات والحركة، وهي من الاتجاهات البحثية الحديثة في تدريس الحاسب للمراحل المبكرة."},
+{s:15,q:"تقسيم مشكلة كبيرة إلى مشكلات أصغر يسهل حلها من مهارات التفكير الحاسوبي، وتسمى:",o:["التجزئة Decomposition","التجريد Abstraction","التعرف على الأنماط","تقييم الحلول"],a:0,e:"التجزئة تحوّل المشكلة المعقدة إلى أجزاء. أما التجريد فهو إهمال التفاصيل غير المهمة والتركيز على الجوهري."},
+{s:15,q:"شرط أساسي لتطبيق خوارزمية البحث الثنائي Binary Search على قائمة:",o:["أن تكون القائمة مرتبة","أن تكون عناصرها أعداداً فردية","أن يكون طولها عدداً زوجياً","ألا تحتوي على تكرار"],a:0,e:"البحث الثنائي يقارن بالعنصر الأوسط ثم يستبعد نصف القائمة، وهذا لا يصح إلا إذا كانت القائمة مرتبة."},
+{s:16,q:"في الجداول الإلكترونية، أي دالة تحسب المتوسط الحسابي لمجموعة خلايا؟",o:["AVERAGE","SUM","COUNT","MAX"],a:0,e:"AVERAGE للمتوسط، SUM للمجموع، COUNT لعدّ الخلايا الرقمية، MAX لأكبر قيمة."},
+{s:16,q:"لعرض نسبة كل جزء من الكل، مثل توزيع درجات الطلاب على التقديرات، أنسب مخطط هو:",o:["المخطط الدائري","المخطط الخطي","المخطط المبعثر","المخطط الراداري"],a:0,e:"المخطط الدائري يوضح أجزاء الكل كنسب. أما الخطي فيناسب التغير عبر الزمن، والمبعثر يناسب العلاقة بين متغيرين."}
+];
+const S={1:"المعيار 1: الرياضيات لعلوم الحاسب",2:"المعيار 2: التصميم المنطقي",3:"المعيار 3: عمارة الحاسبات",4:"المعيار 4: شبكات الحاسب",5:"المعيار 5: البرمجة والتحكم الرقمي",6:"المعيار 6: قواعد البيانات",7:"المعيار 7: الأمن السيبراني",8:"المعيار 8: نظم التشغيل",9:"المعيار 9: تطبيقات الحاسب والإنترنت",10:"المعيار 10: أخلاقيات التقنية",11:"المعيار 11: أدوات التقنية في التعليم",12:"المعيار 12: استراتيجيات التدريس",13:"المعيار 13: مناهج الحاسب",14:"المعيار 14: الأبحاث الحديثة",15:"المعيار 15: البرمجة والتفكير العليا",16:"المعيار 16: تحليل البيانات"};
+const $=id=>document.getElementById(id);
+const L=["أ","ب","ج","د"];
+let set=[],i=0,ans=[],t0=0,tick=null;
+const shuf=a=>{a=a.slice();for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a};
+$("qcount").textContent=Q.length+" سؤالاً";
+function show(id){["start","quiz","result"].forEach(x=>$(x).classList.toggle("hide",x!==id));window.scrollTo(0,0)}
+function begin(){
+  set=shuf(Q).map(q=>{const idx=shuf([0,1,2,3]);return{...q,o:idx.map(k=>q.o[k]),a:idx.indexOf(q.a)}});
+  i=0;ans=[];t0=Date.now();clearInterval(tick);
+  tick=setInterval(()=>{$("clock").textContent=fmt(Date.now()-t0)},1000);$("clock").textContent="00:00";
+  show("quiz");render();
+}
+function fmt(ms){const s=Math.floor(ms/1000);return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0")}
+function render(){
+  const q=set[i];
+  $("pos").textContent="السؤال "+(i+1)+" من "+set.length;
+  $("prog").style.width=(i/set.length*100)+"%";
+  $("std").textContent=S[q.s];
+  $("qt").innerHTML=q.q;
+  $("exp").classList.add("hide");$("next").classList.add("hide");
+  $("opts").innerHTML="";
+  q.o.forEach((t,k)=>{const b=document.createElement("button");b.className="opt";b.innerHTML='<span class="k">'+L[k]+'</span><span>'+t+'</span>';b.onclick=()=>pick(k);$("opts").appendChild(b)});
+}
+function pick(k){
+  const q=set[i],bs=[...$("opts").children];
+  bs.forEach(b=>b.disabled=true);
+  bs[q.a].classList.add("ok");
+  if(k!==q.a)bs[k].classList.add("bad");
+  ans.push({q,k,ok:k===q.a});
+  $("exp").innerHTML=(k===q.a?"<b>إجابة صحيحة.</b> ":"<b>الإجابة الصحيحة: "+L[q.a]+".</b> ")+q.e;
+  $("exp").classList.remove("hide");
+  $("next").textContent=i===set.length-1?"اعرض النتيجة":"السؤال التالي";
+  $("next").classList.remove("hide");$("next").focus({preventScroll:true});
+}
+function next(){if(i<set.length-1){i++;render()}else finish()}
+function finish(){
+  clearInterval(tick);$("prog").style.width="100%";
+  const c=ans.filter(a=>a.ok).length,p=Math.round(c/ans.length*100);
+  const col=p>=80?"var(--ok)":p>=50?"var(--cy)":"var(--bad)";
+  $("ring").style.background="conic-gradient("+col+" "+p*3.6+"deg, var(--line) 0)";
+  $("pct").textContent=p+"%";
+  $("msg").textContent=p>=80?"ممتاز، أنت جاهز بإذن الله":p>=50?"جيد، ركّز على المعايير الأضعف":"تحتاج إلى مراجعة أكثر، لا تستسلم";
+  $("sub").textContent="أجبت عن "+c+" من "+ans.length+" إجابة صحيحة في "+fmt(Date.now()-t0);
+  const g={};ans.forEach(a=>{g[a.q.s]=g[a.q.s]||[0,0];g[a.q.s][1]++;if(a.ok)g[a.q.s][0]++});
+  $("bystd").innerHTML=Object.keys(g).sort((a,b)=>a-b).map(s=>{const[r,n]=g[s],v=Math.round(r/n*100),cc=v>=80?"var(--ok)":v>=50?"var(--cy)":"var(--bad)";return'<div class="row"><div class="l"><span>'+S[s]+'</span><span>'+r+' / '+n+'</span></div><div class="t"><i style="width:'+v+'%;background:'+cc+'"></i></div></div>'}).join("");
+  const w=ans.filter(a=>!a.ok);
+  $("revh").textContent=w.length?"راجع إجاباتك الخاطئة":"لا توجد إجابات خاطئة، أحسنت";
+  $("review").innerHTML=w.map(a=>'<div class="rev"><p>'+a.q.q+'</p><p class="w">إجابتك: '+a.q.o[a.k]+'</p><p class="a">الصحيحة: '+a.q.o[a.q.a]+'</p><p>'+a.q.e+'</p></div>').join("");
+  show("result");
+}
+$("begin").onclick=begin;$("next").onclick=next;$("again").onclick=begin;
+</script>
+</body>
+</html>
