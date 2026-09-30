@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>الاختبار الثاني – الرخصة المهنية حاسب آلي | المدرب علي العرياني</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EEF3FB;--card:#FFFFFF;--ink:#0A1733;--muted:#5A6B8C;--line:#D5DEEE;--cy:#0891B2;--vi:#7C3AED;--ok:#16A34A;--okbg:#DCFCE7;--bad:#DC2626;--badbg:#FEE2E2;--btn:#F4F7FC}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#060D22;--card:#0E1D45;--ink:#EEF3FF;--muted:#9FB0D3;--line:#22386E;--cy:#22D3EE;--vi:#A78BFA;--ok:#4ADE80;--okbg:#0F3D26;--bad:#F87171;--badbg:#45161A;--btn:#132652}}
+:root[data-theme="dark"]{--bg:#060D22;--card:#0E1D45;--ink:#EEF3FF;--muted:#9FB0D3;--line:#22386E;--cy:#22D3EE;--vi:#A78BFA;--ok:#4ADE80;--okbg:#0F3D26;--bad:#F87171;--badbg:#45161A;--btn:#132652}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*:before,*:after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Cairo,"Segoe UI",Tahoma,Arial,sans-serif;line-height:1.7;min-height:100%}
+.wrap{max-width:720px;margin:0 auto;padding:20px 16px 40px}
+.brand{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:16px;font-size:14px;color:var(--muted)}
+.brand b{color:var(--ink);font-weight:700}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px}
+h1{font-size:30px;font-weight:900;line-height:1.35;margin:0 0 8px}
+h1 span{color:var(--cy)}
+.lead{color:var(--muted);margin:0 0 18px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.pill{font-size:14px;font-weight:600;padding:4px 12px;border-radius:30px;border:1px solid var(--line);background:var(--btn)}
+.go{display:block;width:100%;border:0;border-radius:14px;padding:14px;font:700 19px Cairo,sans-serif;color:#fff;background:linear-gradient(90deg,var(--vi),var(--cy));cursor:pointer}
+.go:focus-visible,.opt:focus-visible{outline:3px solid var(--cy);outline-offset:2px}
+.top{display:flex;justify-content:space-between;font-size:14px;color:var(--muted);margin-bottom:8px}
+.bar{height:8px;border-radius:8px;background:var(--line);overflow:hidden;margin-bottom:18px}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--vi),var(--cy));transition:width .3s}
+.std{display:inline-block;font-size:13px;font-weight:700;color:var(--vi);margin-bottom:6px}
+.q{font-size:21px;font-weight:700;margin:0 0 16px}
+.q code,.opt code{direction:ltr;unicode-bidi:isolate;font-family:Consolas,monospace;background:var(--btn);padding:1px 6px;border-radius:6px}
+.opts{display:grid;gap:10px}
+.opt{display:flex;align-items:center;gap:12px;width:100%;text-align:right;border:2px solid var(--line);background:var(--btn);color:var(--ink);border-radius:14px;padding:12px 14px;font:600 17px Cairo,sans-serif;cursor:pointer;transition:border-color .15s}
+.opt:hover:not(:disabled){border-color:var(--cy)}
+.opt .k{flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--card);border:1px solid var(--line);font-weight:700}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}
+.opt.ok .k{background:var(--ok);color:#fff;border-color:var(--ok)}
+.opt.bad{border-color:var(--bad);background:var(--badbg)}
+.opt.bad .k{background:var(--bad);color:#fff;border-color:var(--bad)}
+.opt:disabled{cursor:default}
+.exp{margin-top:14px;padding:12px 14px;border-radius:14px;background:var(--btn);border-right:4px solid var(--cy);font-size:16px}
+.exp b{color:var(--cy)}
+.next{margin-top:16px}
+.score{text-align:center;padding:10px 0 4px}
+.ring{width:150px;height:150px;border-radius:50%;margin:0 auto 12px;display:grid;place-items:center}
+.ring div{width:118px;height:118px;border-radius:50%;background:var(--card);display:grid;place-items:center;font-size:34px;font-weight:900}
+.msg{font-size:20px;font-weight:700;margin:0}
+.sub{color:var(--muted);margin:4px 0 18px}
+h2{font-size:20px;font-weight:700;margin:22px 0 10px}
+.row{margin-bottom:12px}
+.row .l{display:flex;justify-content:space-between;font-size:15px;font-weight:600;gap:10px}
+.row .l span:last-child{flex:none;color:var(--muted)}
+.row .t{height:8px;border-radius:8px;background:var(--line);overflow:hidden;margin-top:4px}
+.row .t i{display:block;height:100%}
+.rev{border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:10px;font-size:15px}
+.rev p{margin:0 0 4px}
+.rev .a{color:var(--ok);font-weight:700}
+.rev .w{color:var(--bad);font-weight:700}
+.foot{margin-top:22px;text-align:center;font-size:14px;color:var(--muted)}
+.foot .acc{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:6px;direction:ltr}
+.mrow{display:flex;direction:ltr;justify-content:center;align-items:center;flex-wrap:wrap;gap:10px;margin-top:12px}
+.mop{font-size:26px;font-weight:900;color:var(--cy)}
+svg.mx{display:block;direction:ltr;flex:none}
+.rev svg.mx{display:inline-block;vertical-align:middle}
+.eq{display:inline-block;direction:ltr;white-space:nowrap}
+
+
+.cw{display:block;direction:ltr;margin-top:14px}
+svg.code{display:block;direction:ltr;max-width:100%;height:auto;margin:0 auto}
+.opt svg.code{margin:0}
+.rev svg.code{margin:6px 0}
+.rev p svg.code{display:inline-block;vertical-align:middle;margin:0 6px}
+.ltr{direction:ltr;unicode-bidi:isolate;display:inline-block;white-space:nowrap}
+.opt.sel{border-color:var(--vi);background:var(--card)}
+.opt.sel .k{background:var(--vi);color:#fff;border-color:var(--vi)}
+.go:disabled{opacity:.45;cursor:default}
+.gate h2{margin-top:0;font-size:24px}
+.fld{display:block;font-weight:700;font-size:15px;margin-bottom:14px}
+.fld input{display:block;width:100%;margin-top:6px;padding:12px 14px;border:2px solid var(--line);border-radius:12px;background:var(--btn);color:var(--ink);font:600 17px Cairo,sans-serif}
+.fld input:focus{outline:none;border-color:var(--cy)}
+.fld input[type=email]{text-align:left}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:15px;color:var(--muted);margin:4px 0 16px;cursor:pointer}
+.chk input{flex:none;width:20px;height:20px;margin-top:5px;accent-color:var(--vi)}
+.err{color:var(--bad);font-weight:700;font-size:15px;margin:0 0 12px}
+.note{font-size:13px;color:var(--muted);text-align:center;margin:10px 0 0}
+.hp{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);opacity:0;pointer-events:none}
+.hide{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand"><span>إعداد: <b>المدرب / علي صالح العرياني</b></span><span>الاختبار الثاني</span></div>
+
+  <section id="start" class="card">
+    <h1>اختبار محاكاة <span>الرخصة المهنية</span> – الاختبار الثاني</h1>
+    <p class="lead">عشرون سؤالاً جديداً في البرمجة وشبكات الحاسب وتطبيقات التدريس الحديثة. أجب عن الأسئلة كلها، ثم تظهر لك النتيجة مع شرح كل إجابة وتحليل مستواك في كل معيار.</p>
+    <div class="meta"><span class="pill" id="qcount"></span><span class="pill">البرمجة</span><span class="pill">الشبكات</span><span class="pill">التدريس الحديث</span><span class="pill">ترتيب عشوائي</span></div>
+    <button class="go" id="begin">ابدأ الاختبار</button>
+  </section>
+
+  <section id="quiz" class="card hide">
+    <div class="top"><span id="pos"></span><span id="clock">00:00</span></div>
+    <div class="bar"><i id="prog"></i></div>
+    <span class="std" id="std"></span>
+    <div class="q" id="qt"></div>
+    <div class="opts" id="opts"></div>
+    <button class="go next" id="next" disabled>السؤال التالي</button>
+  </section>
+
+  <section id="gate" class="card gate hide">
+    <h2>أنهيت الاختبار، نتيجتك جاهزة</h2>
+    <p class="lead">أدخل بريدك الإلكتروني لعرض نتيجتك مع شرح الإجابات الخاطئة وتحليل مستواك في كل معيار.</p>
+    <form id="gf" novalidate>
+      <label class="fld">الاسم (اختياري)<input id="nm" autocomplete="name" maxlength="60"></label>
+      <label class="fld">البريد الإلكتروني<input id="em" type="email" dir="ltr" autocomplete="email" inputmode="email" maxlength="120" placeholder="name@example.com" required></label>
+      <input id="hp" class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label class="chk"><input type="checkbox" id="cs"><span>أوافق على تلقي رسائل عن الدورات والاختبارات الجديدة من المدرب علي العرياني، ويمكنني إلغاء الاشتراك في أي وقت.</span></label>
+      <p class="err hide" id="err"></p>
+      <button class="go" id="send" type="submit">اعرض نتيجتي</button>
+      <p class="note">لن يُشارَك بريدك مع أي جهة أخرى.</p>
+    </form>
+  </section>
+
+  <section id="result" class="card hide">
+    <div class="score">
+      <div class="ring" id="ring"><div id="pct"></div></div>
+      <p class="msg" id="msg"></p>
+      <p class="sub" id="sub"></p>
+    </div>
+    <h2>مستواك في كل معيار</h2>
+    <div id="bystd"></div>
+    <h2 id="revh">راجع إجاباتك الخاطئة</h2>
+    <div id="review"></div>
+    <button class="go" id="again">أعد الاختبار</button>
+  </section>
+
+  <div class="foot">
+    للمزيد من الاختبارات والشروحات تابع المدرب علي العرياني
+    <div class="acc"><span class="pill">Telegram: Ali_Aleryany</span><span class="pill">TikTok: @alialeryani</span><span class="pill">X: @ali_aleryany</span></div>
+  </div>
+</div>
+
+<script>
+// ضع هنا رابط تطبيق الويب من Google Apps Script (ينتهي بـ /exec)
+const SHEET_URL = "https://script.google.com/macros/s/AKfycbyfn2iE5sASg940NqeYUzWREL1aOUcusJD1LYTBvI2FV4qWEhYRUEyE8KB5Z6c5p1SPLg/exec";
+const QUIZ_NAME = "الاختبار الثاني – الرخصة المهنية";
+
+/* ===== رسم الأوامر البرمجية كصورة SVG ===== */
+const esc=t=>String(t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const KW=new Set(["for","in","if","elif","else","while","def","return","continue","break","and","or","not","True","False","None","import","from"]);
+const BI=new Set(["print","range","len","input","int","str","list","dict"]);
+function code(src,o={}){
+  const lines=src.replace(/^\n+|\n+$/g,"").split("\n");
+  const block=o.block!==false, num=block&&lines.length>1&&!o.plain;
+  const fs=block?15:17,cw=fs*0.607,lh=block?24:fs+6,pad=block?16:10,bar=block?26:0,gut=num?30:0;
+  const maxc=Math.max(...lines.map(l=>l.length));
+  const w=Math.ceil(pad*2+gut+maxc*cw), h=Math.ceil(bar+pad*2+lines.length*lh-(lh-fs)-2);
+  let b="";
+  if(block){b+='<circle cx="16" cy="14" r="4.5" fill="#FF5F57"/><circle cx="30" cy="14" r="4.5" fill="#FEBC2E"/><circle cx="44" cy="14" r="4.5" fill="#28C840"/>';
+    if(o.lang)b+='<text x="'+(w-14)+'" y="18" text-anchor="end" fill="#6B7A99" font-size="12">'+esc(o.lang)+'</text>';}
+  lines.forEach((ln,y)=>{
+    const yy=bar+pad+y*lh+fs-2;
+    if(num)b+='<text x="'+(pad+gut-14)+'" y="'+yy+'" text-anchor="end" fill="#55647F">'+(y+1)+'</text>';
+    const re=/(#.*$)|("[^"]*"|'[^']*')|(\b\d+(?:\.\d+)*\b)|([A-Za-z_]\w*)|(\s+)|(.)/g;let m,col=0,sp="";
+    while((m=re.exec(ln))){const t=m[0];let c="#E6EDF7";
+      if(!o.plain){if(m[1])c="#7F8CA8";else if(m[2])c="#C3E88D";else if(m[3])c="#F9A66C";else if(m[4]){if(KW.has(t))c="#C792EA";else if(BI.has(t))c="#7DB7FF";}}
+      if(!m[5])sp+='<tspan x="'+(pad+gut+col*cw).toFixed(1)+'" fill="'+c+'">'+esc(t)+'</tspan>';
+      col+=t.length;}
+    b+='<text y="'+yy+'">'+sp+'</text>';
+  });
+  return '<svg class="code" direction="ltr" style="direction:ltr" role="img" aria-label="'+esc(src.trim())+'" viewBox="0 0 '+w+' '+h+'" width="'+w+'" height="'+h+'"><rect width="'+w+'" height="'+h+'" rx="'+(block?12:8)+'" fill="#0B1427"/><g font-family="Consolas,Menlo,\'DejaVu Sans Mono\',\'Courier New\',monospace" font-size="'+fs+'">'+b+'</g></svg>';
+}
+const PY=src=>'<span class="cw">'+code(src,{lang:"Python"})+'</span>';   // مقطع برمجي داخل السؤال
+const C=t=>code(t,{block:false});                                        // أمر أو ناتج قصير داخل الخيار
+const X=t=>'<span class="ltr">'+t+'</span>';                             // نص لاتيني قصير داخل الجملة العربية
+
+/* ===== الأسئلة ===== */
+const Q=[
+{s:5,q:"ما ناتج تنفيذ المقطع البرمجي التالي؟"+PY(`
+total = 0
+for i in range(1, 6):
+    if i % 2 == 0:
+        continue
+    total += i
+print(total)`),o:[C("9"),C("15"),C("6"),C("5")],a:0,
+e:"الأمر "+X("continue")+" يتخطى الأعداد الزوجية، فيُجمع الفردي فقط: "+X("1+3+5=9")+". الناتج 15 هو مجموع كل الأعداد من 1 إلى 5 دون تخطٍّ، و6 هو مجموع الزوجية."},
+
+{s:5,q:"ما ناتج تنفيذ المقطع البرمجي التالي؟"+PY(`
+nums = [4, 8, 15, 16, 23, 42]
+print(nums[1:4])`),o:[C("[8, 15, 16]"),C("[4, 8, 15]"),C("[8, 15, 16, 23]"),C("[15, 16, 23]")],a:0,
+e:"الفهرسة تبدأ من صفر، والتقطيع "+X("[1:4]")+" يأخذ العناصر ذات الفهارس 1 و2 و3 ولا يشمل الفهرس 4، أي 8 و15 و16."},
+
+{s:15,q:"ما ناتج تنفيذ الدالة العاودية (Recursive) التالية؟"+PY(`
+def f(n):
+    if n <= 1:
+        return 1
+    return n * f(n - 1)
+
+print(f(4))`),o:[C("24"),C("10"),C("12"),C("4")],a:0,
+e:"الدالة تحسب مضروب العدد: "+X("f(4) = 4 × 3 × 2 × 1 = 24")+". وشرط التوقف "+X("n <= 1")+" يمنع الاستدعاء اللانهائي. الناتج 10 هو مجموع الأعداد وليس حاصل ضربها."},
+
+{s:5,q:"ما ناتج تنفيذ المقطع البرمجي التالي؟"+PY(`
+x = 5
+y = x
+x = x + 3
+print(x, y)`),o:[C("8 5"),C("8 8"),C("5 5"),C("5 8")],a:0,
+e:"عند تنفيذ "+X("y = x")+" تأخذ y القيمة 5 في تلك اللحظة، وتغيير x بعد ذلك إلى 8 لا يغيّر قيمة y."},
+
+{s:15,q:"ما درجة التعقيد الزمني (Big-O) للمقطع التالي، حيث n عدد العناصر؟"+PY(`
+for i in range(n):
+    for j in range(n):
+        print(i, j)`),o:[C("O(n²)"),C("O(n)"),C("O(log n)"),C("O(n log n)")],a:0,
+e:"حلقتان متداخلتان تتكرر كل منهما n مرة، فيُنفَّذ الأمر الداخلي "+X("n × n")+" مرة، أي "+X("O(n²)")+". لو كانت الحلقتان متتاليتين لا متداخلتين لكان التعقيد "+X("O(n)")+"."},
+
+{s:5,q:"كم مرة تُنفَّذ الحلقة في المقطع التالي، أي ما الناتج؟"+PY(`
+count = 0
+n = 20
+while n > 1:
+    n = n // 2
+    count += 1
+print(count)`),o:[C("4"),C("5"),C("10"),C("3")],a:0,
+e:"المعامل "+X("//")+" قسمة صحيحة: 20 ثم 10 ثم 5 ثم 2 ثم 1، أي أربع دورات، وعندما تصبح n تساوي 1 يتوقف الشرط "+X("n > 1")+"."},
+
+{s:15,q:"بنية بيانات يُضاف فيها العنصر ويُحذف من الطرف نفسه، فيخرج آخر عنصر دخل أولاً (LIFO). ما هي؟",
+o:["المكدس Stack","الطابور Queue","القائمة المترابطة Linked List","الشجرة Tree"],a:0,
+e:"المكدس يعمل بمبدأ آخر داخل أول خارج، مثل زر التراجع في البرامج. أما الطابور فيعمل بمبدأ أول داخل أول خارج (FIFO) مثل طابور الطباعة."},
+
+{s:5,q:"ماذا يحدث عند تنفيذ المقطع التالي وإدخال العدد 20؟"+PY(`
+age = input("Age: ")
+print(age + 1)`),
+o:["يظهر خطأ في النوع TypeError لأن input تعيد نصاً","يُطبع العدد 21","يظهر خطأ في الصياغة SyntaxError","يُطبع 201"],a:0,
+e:"الدالة "+X("input()")+" تعيد القيمة نصاً دائماً، ولا يمكن جمع نص مع عدد في بايثون. الحل تحويل القيمة أولاً: "+X("int(input(\"Age: \"))")+". والناتج 201 يحدث في لغات تدمج النص بالعدد تلقائياً مثل JavaScript وليس في بايثون."},
+
+{s:5,q:"ما ناتج تنفيذ المقطع البرمجي التالي؟"+PY(`
+stock = {"pen": 3, "book": 5}
+stock["pen"] += 2
+stock["bag"] = 1
+print(len(stock), stock["pen"])`),o:[C("3 5"),C("2 5"),C("3 3"),C("2 3")],a:0,
+e:"السطر الثاني يزيد قيمة المفتاح pen من 3 إلى 5، والسطر الثالث يضيف مفتاحاً جديداً bag، فيصبح القاموس ثلاثة عناصر."},
+
+{s:4,q:"شبكة عنوانها "+X("192.168.10.0/26")+"، كم عدد العناوين المتاحة لتخصيصها للأجهزة فيها؟",
+o:["62","64","30","126"],a:0,
+e:"البادئة "+X("/26")+" تترك 6 بتات للأجهزة: "+X("2⁶ = 64")+" عنواناً، يُطرح منها عنوان الشبكة وعنوان البث، فيبقى 62 عنواناً متاحاً."},
+
+{s:4,q:"البروتوكول الذي يمنح الأجهزة عند اتصالها بالشبكة عنوان IP وقناع الشبكة والبوابة الافتراضية تلقائياً هو:",
+o:["DHCP","DNS","HTTP","FTP"],a:0,
+e:"بروتوكول DHCP يوزّع إعدادات الشبكة تلقائياً بدلاً من إدخالها يدوياً في كل جهاز. أما DNS فيحوّل أسماء النطاقات إلى عناوين IP."},
+
+{s:4,q:"جهاز يعمل في طبقة الشبكة (الطبقة الثالثة) ويحدد أفضل مسار لنقل الحزم بين شبكات مختلفة اعتماداً على عناوين IP، هو:",
+o:["الموجّه Router","المبدّل Switch","المُجمّع Hub","نقطة الوصول Access Point"],a:0,
+e:"الموجّه يربط بين الشبكات ويختار المسار عبر عناوين IP. المبدّل يعمل في الطبقة الثانية بعناوين MAC داخل الشبكة نفسها، والمجمّع يكرر الإشارة لكل المنافذ دون تمييز."},
+
+{s:4,q:"في البث المباشر والألعاب الإلكترونية تُفضَّل السرعة على ضمان وصول كل حزمة. أي بروتوكول نقل هو الأنسب؟",
+o:["UDP لأنه لا ينتظر تأكيد الاستلام ولا يعيد الإرسال","TCP لأنه يضمن وصول الحزم مرتبة","ICMP لأنه أسرع بروتوكولات النقل","ARP لأنه يعمل داخل الشبكة المحلية"],a:0,
+e:"بروتوكول UDP بلا اتصال مسبق ولا إعادة إرسال، فتأخيره أقل، وفقدان حزمة قليلة لا يؤثر كثيراً في الصوت أو الصورة. أما TCP فمناسب حين يجب أن تصل البيانات كاملة، مثل تنزيل الملفات وتصفح المواقع."},
+
+{s:4,q:"أي أمر في نظام ويندوز يعرض المسار الذي تسلكه الحزم عبر الموجّهات حتى تصل إلى الوجهة؟",
+o:[C("tracert"),C("ping"),C("ipconfig"),C("nslookup")],a:0,
+e:"الأمر "+X("tracert")+" (ويقابله "+X("traceroute")+" في لينكس) يعرض كل موجّه في الطريق وزمن الوصول إليه. أما "+X("ping")+" فيختبر الاتصال بالوجهة فقط، و"+X("ipconfig")+" يعرض إعدادات الجهاز، و"+X("nslookup")+" يستعلم من خادم DNS."},
+
+{s:4,q:"نفّذ معلم الأمر التالي على جهاز في معمل المدرسة. ما العنوان الذي يرسل إليه الجهاز الحزم المتجهة إلى خارج شبكته المحلية، مثل الإنترنت؟"+'<span class="cw">'+code(`
+C:\\> ipconfig
+   IPv4 Address. . . . : 192.168.1.25
+   Subnet Mask . . . . : 255.255.255.0
+   Default Gateway . . : 192.168.1.1`,{lang:"CMD",plain:true})+'</span>',
+o:[C("192.168.1.1"),C("192.168.1.25"),C("255.255.255.0"),C("192.168.1.255")],a:0,
+e:"البوابة الافتراضية Default Gateway هي عنوان الموجّه الذي تمر عبره كل حزمة وجهتها خارج الشبكة المحلية. أما "+X("192.168.1.25")+" فهو عنوان الجهاز نفسه، و"+X("192.168.1.255")+" عنوان البث في هذه الشبكة."},
+
+{s:11,q:"معلم يريد مسابقة تفاعلية مباشرة داخل الصف، يجيب فيها الطلاب من أجهزتهم وتظهر لوحة صدارة فورية بعد كل سؤال. أنسب أداة:",
+o:["Kahoot!","Padlet","Canva","Google Drive"],a:0,
+e:"Kahoot! مصمم للمسابقات الحية بتوقيت ونقاط ولوحة صدارة، مما يزيد التنافس والدافعية. Padlet للمشاركة التعاونية، وCanva للتصميم، وGoogle Drive لتخزين الملفات ومشاركتها."},
+
+{s:11,q:"أداة تعمل كلوحة جدارية رقمية يضيف عليها الطلاب أفكارهم وصورهم وروابطهم في مكان واحد ويعلّقون على مشاركات زملائهم:",
+o:["Padlet","Kahoot!","Scratch","Tinkercad"],a:0,
+e:"Padlet لوحة تعاونية تناسب العصف الذهني وجمع المشاريع ومشاركة الأفكار. Scratch للبرمجة بالكتل، وTinkercad للتصميم ثلاثي الأبعاد ومحاكاة الدوائر الإلكترونية."},
+
+{s:12,q:"معلم يرسل لطلابه فيديو الشرح ليشاهدوه في المنزل، ثم يخصص وقت الحصة لحل التمارين والمشاريع العملية بإشرافه. هذه الاستراتيجية هي:",
+o:["الصف المقلوب Flipped Classroom","التعلم الذاتي المستقل","المحاضرة التقليدية","التعليم عن بُعد المتزامن"],a:0,
+e:"في الصف المقلوب ينتقل تلقي المعرفة إلى المنزل، ويصبح وقت الحصة للتطبيق والنقاش ومعالجة الصعوبات بحضور المعلم، وهو الوقت الذي يحتاج فيه الطالب إلى المعلم أكثر."},
+
+{s:11,q:"وفق نموذج SAMR لدمج التقنية في التعليم، يتعاون طلاب من مدرستين في مدينتين مختلفتين على كتابة مستند واحد وتحريره في اللحظة نفسها. في أي مستوى يقع هذا النشاط؟",
+o:["إعادة التعريف Redefinition","الإحلال Substitution","التعزيز Augmentation","التعديل Modification"],a:0,
+e:"مستوى إعادة التعريف هو توظيف التقنية لإنجاز مهمة لم تكن ممكنة بدونها. أما الإحلال فاستبدال أداة بأخرى رقمية دون تغيير في الوظيفة، مثل كتابة الواجب في معالج نصوص بدل الورقة."},
+
+{s:11,q:"استخدم معلم أداة ذكاء اصطناعي لتوليد أسئلة اختبار لطلابه. ما الممارسة الصحيحة قبل استخدام هذه الأسئلة؟",
+o:["مراجعة الأسئلة والتحقق من دقتها ومواءمتها لأهداف الدرس","استخدامها مباشرة لأن أدوات الذكاء الاصطناعي لا تخطئ","إرسالها للطلاب ليكتشفوا الأخطاء بأنفسهم في الاختبار","الاكتفاء بالتحقق من سلامتها اللغوية فقط"],a:0,
+e:"أدوات الذكاء الاصطناعي قد تنتج معلومات غير دقيقة أو خارج نطاق المنهج، والمعلم مسؤول عن مراجعة المحتوى علمياً وتربوياً قبل تقديمه للطلاب."}
+];
+const S={4:"المعيار 4: شبكات الحاسب",5:"المعيار 5: البرمجة والتحكم الرقمي",11:"المعيار 11: أدوات التقنية في التعليم",12:"المعيار 12: استراتيجيات التدريس",15:"المعيار 15: البرمجة والتفكير العليا"};
+
+/* ===== منطق الاختبار ===== */
+const $=id=>document.getElementById(id);
+const L=["أ","ب","ج","د"];
+let set=[],i=0,ans=[],sel=-1,t0=0,dur=0,tick=null;
+const shuf=a=>{a=a.slice();for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a};
+const fmt=ms=>{const s=Math.floor(ms/1000);return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0")};
+$("qcount").textContent=Q.length+" سؤالاً";
+function show(id){["start","quiz","gate","result"].forEach(x=>$(x).classList.toggle("hide",x!==id));window.scrollTo(0,0)}
+function begin(){
+  set=shuf(Q).map(q=>{const idx=shuf([0,1,2,3]);return{...q,o:idx.map(k=>q.o[k]),a:idx.indexOf(q.a)}});
+  i=0;ans=[];t0=Date.now();clearInterval(tick);
+  tick=setInterval(()=>{$("clock").textContent=fmt(Date.now()-t0)},1000);$("clock").textContent="00:00";
+  show("quiz");render();
+}
+function render(){
+  const q=set[i];sel=-1;
+  $("pos").textContent="السؤال "+(i+1)+" من "+set.length;
+  $("prog").style.width=(i/set.length*100)+"%";
+  $("std").textContent=S[q.s];
+  $("qt").innerHTML=q.q;
+  $("opts").innerHTML="";
+  q.o.forEach((t,k)=>{const b=document.createElement("button");b.className="opt";b.innerHTML='<span class="k">'+L[k]+'</span><span>'+t+'</span>';b.onclick=()=>pick(k);$("opts").appendChild(b)});
+  $("next").disabled=true;
+  $("next").textContent=i===set.length-1?"إنهاء الاختبار":"السؤال التالي";
+}
+function pick(k){sel=k;[...$("opts").children].forEach((b,j)=>b.classList.toggle("sel",j===k));$("next").disabled=false}
+function next(){
+  if(sel<0)return;
+  const q=set[i];ans.push({q,k:sel,ok:sel===q.a});
+  if(i<set.length-1){i++;render();return}
+  clearInterval(tick);dur=Date.now()-t0;$("prog").style.width="100%";
+  try{const e=localStorage.getItem("qz_email"),n=localStorage.getItem("qz_name");if(e)$("em").value=e;if(n)$("nm").value=n}catch(_){}
+  $("err").classList.add("hide");$("send").disabled=false;$("send").textContent="اعرض نتيجتي";
+  show("gate");$("em").focus({preventScroll:true});
+}
+function stats(){
+  const c=ans.filter(a=>a.ok).length,p=Math.round(c/ans.length*100),g={};
+  ans.forEach(a=>{g[a.q.s]=g[a.q.s]||[0,0];g[a.q.s][1]++;if(a.ok)g[a.q.s][0]++});
+  return{c,p,g};
+}
+async function save(d){
+  if(!SHEET_URL||SHEET_URL.indexOf("http")!==0)return;
+  try{await Promise.race([
+    fetch(SHEET_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(d)}),
+    new Promise(r=>setTimeout(r,6000))])}catch(_){}
+}
+$("gf").onsubmit=async ev=>{
+  ev.preventDefault();
+  const email=$("em").value.trim(),name=$("nm").value.trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){$("err").textContent="اكتب بريداً إلكترونياً صحيحاً حتى تظهر نتيجتك.";$("err").classList.remove("hide");$("em").focus();return}
+  $("err").classList.add("hide");$("send").disabled=true;$("send").textContent="جارٍ عرض النتيجة…";
+  try{localStorage.setItem("qz_email",email);if(name)localStorage.setItem("qz_name",name)}catch(_){}
+  const{c,p,g}=stats();
+  await save({quiz:QUIZ_NAME,name,email,consent:$("cs").checked,correct:c,total:ans.length,percent:p,duration:fmt(dur),
+    weak:Object.keys(g).filter(s=>g[s][0]/g[s][1]<.5).map(s=>S[s]).join("، "),website:$("hp").value});
+  finish();
+};
+function finish(){
+  const{c,p,g}=stats();
+  const col=p>=80?"var(--ok)":p>=50?"var(--cy)":"var(--bad)";
+  $("ring").style.background="conic-gradient("+col+" "+p*3.6+"deg, var(--line) 0)";
+  $("pct").textContent=p+"%";
+  $("msg").textContent=p>=80?"ممتاز، أنت جاهز بإذن الله":p>=50?"جيد، ركّز على المعايير الأضعف":"تحتاج إلى مراجعة أكثر، لا تستسلم";
+  $("sub").textContent="أجبت عن "+c+" من "+ans.length+" إجابة صحيحة في "+fmt(dur);
+  $("bystd").innerHTML=Object.keys(g).sort((a,b)=>a-b).map(s=>{const[r,n]=g[s],v=Math.round(r/n*100),cc=v>=80?"var(--ok)":v>=50?"var(--cy)":"var(--bad)";return'<div class="row"><div class="l"><span>'+S[s]+'</span><span>'+r+' / '+n+'</span></div><div class="t"><i style="width:'+v+'%;background:'+cc+'"></i></div></div>'}).join("");
+  const w=ans.filter(a=>!a.ok);
+  $("revh").textContent=w.length?"راجع إجاباتك الخاطئة":"لا توجد إجابات خاطئة، أحسنت";
+  $("review").innerHTML=w.map(a=>'<div class="rev"><div>'+a.q.q+'</div><p class="w">إجابتك: '+a.q.o[a.k]+'</p><p class="a">الصحيحة: '+a.q.o[a.q.a]+'</p><p>'+a.q.e+'</p></div>').join("");
+  show("result");
+}
+$("begin").onclick=begin;$("next").onclick=next;$("again").onclick=begin;
+</script>
+</body>
+</html>
