@@ -61,6 +61,11 @@ h2{font-size:20px;font-weight:700;margin:22px 0 10px}
 .rev .w{color:var(--bad);font-weight:700}
 .foot{margin-top:22px;text-align:center;font-size:14px;color:var(--muted)}
 .foot .acc{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:6px;direction:ltr}
+.mrow{display:flex;direction:ltr;justify-content:center;align-items:center;flex-wrap:wrap;gap:10px;margin-top:12px}
+.mop{font-size:26px;font-weight:900;color:var(--cy)}
+svg.mx{display:block;direction:ltr;flex:none}
+.rev svg.mx{display:inline-block;vertical-align:middle}
+.eq{display:inline-block;direction:ltr;white-space:nowrap}
 .hide{display:none}
 </style>
 </head>
@@ -105,8 +110,13 @@ h2{font-size:20px;font-weight:700;margin:22px 0 10px}
 </div>
 
 <script>
+// يرسم المصفوفة كصورة SVG بأقواس حقيقية، باتجاه ثابت من اليسار لليمين
+function mx(r){const c=r[0].length,cw=34,rh=30,w=c*cw+20,h=r.length*rh+8;let t="";
+r.forEach((row,y)=>row.forEach((v,x)=>{t+='<text x="'+(14+x*cw+cw/2-2)+'" y="'+(y*rh+26)+'" text-anchor="middle">'+v+'</text>'}));
+return '<svg class="mx" role="img" aria-label="مصفوفة" viewBox="0 0 '+w+' '+h+'" width="'+w+'" height="'+h+'"><path d="M10 2H4V'+(h-2)+'H10M'+(w-10)+' 2H'+(w-4)+'V'+(h-2)+'H'+(w-10)+'" fill="none" stroke="currentColor" stroke-width="2"/><g fill="currentColor" font-family="Cairo,Arial,sans-serif" font-size="20" font-weight="700">'+t+'</g></svg>'}
+const op=x=>'<span class="mop">'+x+'</span>';
 const Q=[
-{s:1,q:"ما ناتج جمع المصفوفتين <code>[[1,2],[3,4]]</code> و <code>[[5,6],[7,8]]</code>؟",o:["<code>[[6,8],[10,12]]</code>","<code>[[5,12],[21,32]]</code>","<code>[[6,8],[12,10]]</code>","<code>[[4,4],[4,4]]</code>"],a:0,e:"جمع المصفوفات يتم عنصراً بعنصر في الموقع نفسه: 1+5=6، 2+6=8، 3+7=10، 4+8=12. الخيار الثاني هو ناتج ضرب العناصر المتقابلة وليس الجمع."},
+{s:1,q:'ما ناتج جمع المصفوفتين التاليتين؟<span class="mrow">'+mx([[1,2],[3,4]])+op('+')+mx([[5,6],[7,8]])+op('=')+op('?')+'</span>',o:[mx([[6,8],[10,12]]),mx([[5,12],[21,32]]),mx([[6,8],[12,10]]),mx([[4,4],[4,4]])],a:0,e:"جمع المصفوفات يتم عنصراً بعنصر في الموقع نفسه: <bdi class=\"eq\">1+5=6</bdi>، <bdi class=\"eq\">2+6=8</bdi>، <bdi class=\"eq\">3+7=10</bdi>، <bdi class=\"eq\">4+8=12</bdi>. أما الخيار الذي عناصره 5، 12، 21، 32 فهو ناتج ضرب العناصر المتقابلة وليس الجمع."},
 {s:1,q:"إذا كانت المصفوفة A من الرتبة 2×3 والمصفوفة B من الرتبة 3×4، فما رتبة حاصل الضرب AB؟",o:["2×4","3×3","4×2","لا يمكن ضربهما"],a:0,e:"يمكن الضرب لأن عدد أعمدة A (3) يساوي عدد صفوف B (3)، والناتج يأخذ عدد صفوف الأولى وعدد أعمدة الثانية: 2×4."},
 {s:1,q:"العدد الثنائي <code>1011</code> يساوي في النظام العشري:",o:["11","13","9","7"],a:0,e:"1×8 + 0×4 + 1×2 + 1×1 = 11."},
 {s:2,q:"أي بوابة منطقية يكون ناتجها 1 فقط عندما يختلف المدخلان؟",o:["XOR","AND","OR","NAND"],a:0,e:"بوابة XOR (أو الحصرية) تعطي 1 عند اختلاف المدخلين (0،1) أو (1،0)، وتعطي 0 عند تساويهما."},
